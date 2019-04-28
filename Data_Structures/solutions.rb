@@ -603,8 +603,27 @@ puts sum(10)
 # puts fib(6)
 
 # ******************************
-# Linked LIst
+# Binary Search
 # ******************************
+def sqrt(number)
+  sqrt_recursive(number, 0, number)
+end
+
+def sqrt_recursive(number, min_interval, max_interval)
+  # Your code here
+  sRoot = (min_interval + max_interval) / 2
+  
+  if sRoot == number/sRoot
+    return sRoot
+  elsif sRoot > number/sRoot 
+    sqrt_recursive(number,min_interval,sRoot)
+  else
+    sqrt_recursive(number,sRoot,max_interval)
+  end
+end
+
+puts sqrt(25)
+puts sqrt(7056)
 
 # ******************************
 # Linked LIst
