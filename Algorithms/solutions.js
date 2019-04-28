@@ -1,11 +1,8 @@
 // ******************************
-// pageCount
+// Drawing Book
 // ******************************
 function pageCount(n, p) {
-    /*
-     * Write your code here.
-     */
-
+ 
     const Turns = Math.floor(p / 2);
     const maxTurns = Math.floor(n / 2);
 
@@ -14,11 +11,28 @@ function pageCount(n, p) {
 }
 
 // ******************************
-// Linked LIst
+// Electronics Shop
 // ******************************
+function getMoneySpent(keyboards, drives, b) {
+    /*
+     * Write your code here.
+     */
+    let costs = [];
+    for (let i = 0; i < keyboards.length; i++) {
+        for (let j = 0; j < drives.length; j++) {
+            costs[costs.length] = keyboards[i] + drives[j];
+        }
+    }
 
+    if (costs.filter(cost => (cost <= b)).length != 0) {
+        return  Math.max.apply(Math, costs.filter(cost => (cost <= b)));
+    } else {
+        return -1;
+    }
+
+}
 // ******************************
-// Linked LIst
+// Picking Numbers
 // ******************************
 
 // ******************************
