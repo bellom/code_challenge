@@ -567,8 +567,23 @@ puts transpose('gngngnnggnngggnnn')
 # => nnnnnnnnngggggggg
 
 # ******************************
-# Linked LIst
+# Stacks or Recursion
 # ******************************
+def tree_height(tree_as_list)
+  # your code here
+  height = 0
+  stack = []
+  for i in tree_as_list
+    stack.push(i)
+    if 2**height == stack.length
+      height += 1
+      stack = []
+    end
+  end
+  height
+end
+
+puts tree_height([2, 7, 5, 2, 6, 0, 9])
 
 # ******************************
 # Linked LIst
