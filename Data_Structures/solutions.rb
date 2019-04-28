@@ -517,8 +517,34 @@ sliding_maximum(3, [1, 3, 5, 7, 9, 2])
 # => [5, 7, 9, 9]
 
 # ******************************
-# Linked LIst
+# Balanced Brackets
 # ******************************
+def balanced_brackets?(s)
+  # your code here
+    left = '{[('
+    right = ')]}'
+    hash = {'{' => '}', '(' => ')', '[' => ']'}
+    stack = []
+    
+    s.each_char do |c|
+        if left.include? c
+            stack.push c
+        elsif right.include? c
+            return false unless hash[stack.pop] == c
+        end
+    end
+    
+    return stack.length > 0 ? false : true
+end
+
+puts balanced_brackets?('(hello)[world]')
+# => true
+
+puts balanced_brackets?('([)]')
+# => false
+
+puts balanced_brackets?('[({}{}{})([])]')
+# => true
 
 # ******************************
 # Linked LIst
