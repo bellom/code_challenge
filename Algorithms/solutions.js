@@ -34,6 +34,33 @@ function getMoneySpent(keyboards, drives, b) {
 // ******************************
 // Picking Numbers
 // ******************************
+function pickingNumbers(a) {
+    // Write your code here
+    
+    const newArray = new Array(100);
+    newArray.fill(0);
+    
+    if(!a || a.length == 0) { 
+        return 0; 
+    }
+ 
+    const arrayLength = a.length;
+  
+    for(let i=0; i< arrayLength; i++) {
+      newArray[a[i]] += 1;
+    }
+  
+    let max = 0;
+    for(let j=1; j< 100; j++) {
+      let newVal = newArray[j];
+      let oldVal = newArray[j - 1];
+      if(oldVal != 0 && oldVal + newVal > max) {
+        max = oldVal + newVal
+      };
+    }
+  
+    return max;
+}
 
 // ******************************
 // Linked LIst
