@@ -772,9 +772,56 @@ puts post_order(tree)
 # ******************************
 # Binary Search Tree
 # ******************************
+class Node
+  attr_reader :data
+  attr_accessor :left, :right
+
+  def initialize(data)
+    @data = data
+  end
+end
+
+def pre_order(node)
+  if node == nil
+    return ''
+  end
+
+  result = "#{node.data} "
+  result += pre_order(node.left)
+  result += pre_order(node.right)
+end
+
+def binary_search_tree(array)
+  # your code here
+  tree = nil
+  array.each do |key|
+    if tree == nil
+      tree = Node.new(key)
+    else 
+      insert(tree, key)
+    end
+  end
+  
+  pre_order(tree).to_s.strip
+end
+
+def insert(node, value)
+  if node.nil?
+    node = Node.new(value)
+  end
+  if value > node.data
+    node.right = insert(node.right, value)
+  elsif value < node.data
+    node.left = insert(node.left, value)
+  end
+  node
+end
+
+binary_search_tree([8, 3, 10, 1, 6, 14, 4, 7, 13])
+# => "8 3 1 6 4 7 10 14 13"
 
 # ******************************
-# Linked LIst
+# Graphs
 # ******************************
 
 # ******************************
