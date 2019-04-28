@@ -823,9 +823,32 @@ binary_search_tree([8, 3, 10, 1, 6, 14, 4, 7, 13])
 # ******************************
 # Graphs
 # ******************************
+def graph(hash_graph)
+  # write your code here
+  current_vertx = 0
+  verties = [0]
+  while current_vertx != 4 do
+    current_vertx = hash_graph[current_vertx][0]
+    verties << current_vertx
+  end
+  return verties
+end
+
+hash = { 
+  0 => [2], 
+  1 => [4], 
+  2 => [5, 0, 3], 
+  3 => [2], 
+  4 => [1, 5], 
+  5 => [4, 2]
+}
+
+p graph(hash)
+# => [0, 2, 5, 4]
+
 
 # ******************************
-# Linked LIst
+# Breadth-First Search
 # ******************************
 
 # ******************************
