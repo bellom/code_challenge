@@ -850,9 +850,35 @@ p graph(hash)
 # ******************************
 # Breadth-First Search
 # ******************************
+def bfs(graph)
+  # write your code here
+  queue = [0]
+  result = []
+  v_arr = []
+  until queue.empty? do
+    first = queue.shift
+    result << first
+    v_arr << first
+    
+    nv_arr = graph[first].reject {|i| v_arr.include? i}
+    v_arr += nv_arr
+    queue += nv_arr
+  end
+  result
+end
+
+p bfs({
+  0 => [2], 
+  1 => [4], 
+  2 => [5, 0, 3], 
+  3 => [2], 
+  4 => [1, 5], 
+  5 => [4, 2]
+})
+# => [0, 2, 5, 3, 4, 1]
 
 # ******************************
-# Linked LIst
+# Depth-First Search
 # ******************************
 
 # ******************************
