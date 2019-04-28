@@ -586,8 +586,21 @@ end
 puts tree_height([2, 7, 5, 2, 6, 0, 9])
 
 # ******************************
-# Linked LIst
+# Basic Recursion
 # ******************************
+def sum(number)
+  # Your code here
+  number == 0 ? 0 : number + sum(number - 1)
+end
+
+puts sum(4)
+puts sum(10)
+
+# def fib(n)
+#     n < 2 ? n : fib(n-1) + fib(n-2)
+# end
+ 
+# puts fib(6)
 
 # ******************************
 # Linked LIst
