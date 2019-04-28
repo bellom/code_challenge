@@ -78,8 +78,25 @@ function hurdleRace(k, height) {
 }
 
 // ******************************
-// Linked LIst
+//Angry Professor
 // ******************************
+function angryProfessor(k, a) {
+    let earlyArray = [];
+    let lateArray = [];
+    for (let i = 0; i < a.length; i++){
+        if(a[i] <= 0){
+            earlyArray.push(i);
+        }
+        if(a[i] > 0){
+            lateArray.push(i);
+        }
+    }
+    let yes = earlyArray.length;
+    let no = lateArray.length;
+    if(yes < k){
+        return "YES";
+    }else {return "NO";}
+}
 
 // ******************************
 // Linked LIst
