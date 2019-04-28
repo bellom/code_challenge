@@ -63,8 +63,19 @@ function pickingNumbers(a) {
 }
 
 // ******************************
-// Linked LIst
+// The Hurdle Race
 // ******************************
+function hurdleRace(k, height) {
+    //minD represent minimum dose
+    let minD = 0;
+    let max = Math.max(...height);
+    
+    if(k > max){minD = 0}
+    
+    if(k < max){minD = max - k}
+    
+    return minD;
+}
 
 // ******************************
 // Linked LIst
