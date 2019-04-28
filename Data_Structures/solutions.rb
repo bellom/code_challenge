@@ -626,8 +626,24 @@ puts sqrt(25)
 puts sqrt(7056)
 
 # ******************************
-# Linked LIst
+# Towers of Hanoi - Part 1
 # ******************************
+def move(starting, goal)
+  # your code here
+  middle = 6 - starting - goal
+  
+  mov = "#{starting}->#{middle}"
+  mov += " #{starting}->#{goal}"
+  mov += " #{middle}->#{goal}"
+  
+  mov
+end
+
+puts move(1, 3)
+# => 1->2 1->3 2->3
+
+puts move(2, 3)
+# => 2->1 2->3 1->3
 
 # ******************************
 # Linked LIst
