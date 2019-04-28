@@ -965,9 +965,64 @@ puts search_tree?([10, 4, 12])
 
 puts search_tree?([10, 5, 7])
 # => false
+
 # ******************************
-# Linked LIst
+# Is it balanced?
 # ******************************
+class Node
+  attr_reader :data
+  attr_accessor :left, :right
+  def initialize(data)
+    @data = data
+  end
+end
+
+def array_to_tree(array, i)
+  return nil if i >= array.length || array[i] == 0
+  node = Node.new(array[i])
+  node.left = array_to_tree(array, 2*i+1)
+  node.right = array_to_tree(array, 2*i+2)
+  node
+end
+
+def maximum(a,b)
+   a >= b ? a : b 
+end 
+
+def minimum(a,b)
+   a <= b ? a : b 
+end
+
+def height(node)
+  if node == nil
+    return 0
+  end
+  return 1 + maximum(height(node.left),height(node.right))
+end
+
+def balanced_tree?(array_tree)
+  # write your code here
+  tree = array_to_tree(array_tree, 0)
+  is_balanced(tree)
+end
+
+def is_balanced(node)
+  if node == nil  
+        return true
+  end      
+  lh = height(node.left)
+  rh = height(node.right)
+  if maximum(lh,rh)- minimum(lh,rh) <= 1 && is_balanced(node.left) && is_balanced(node.right)
+    return true
+  end  
+  return false
+end  
+
+puts balanced_tree?([1, 2, 0, 3, 4, 0, 0])
+# => false
+
+puts balanced_tree?([1, 2, 3, 4, 5, 6, 7])
+# => true
 
 # ******************************
 # Linked LIst
