@@ -880,10 +880,45 @@ p bfs({
 # ******************************
 # Depth-First Search
 # ******************************
+def depth_first_search(graph)
+  result = []
+  stack = [0]
+  
+  while !stack.empty? do
+    first = stack.shift
+    if !result.include?(first)
+      result << first
+      stack.unshift(graph[first] - result).flatten!
+    end
+  end
+  result
+end
+
+p depth_first_search({
+  0 => [2], 
+  1 => [4], 
+  2 => [5, 0, 3], 
+  3 => [2], 
+  4 => [1, 5], 
+  5 => [4, 2]
+})
 
 # ******************************
-# Linked LIst
+# How Tall is the Tree?
 # ******************************
+def binary_tree_height(array_tree)
+  result = []
+  i = 0
+  while i < array_tree.length
+    i = 2*i+1
+    result << i
+  end
+  result.length
+end
+
+puts binary_tree_height([2, 7, 5, 2, 6, 0, 9])
+# # => 3
+
 
 # ******************************
 # Linked LIst
