@@ -1025,8 +1025,28 @@ puts balanced_tree?([1, 2, 3, 4, 5, 6, 7])
 # => true
 
 # ******************************
-# Linked LIst
+# connected_graph
 # ******************************
+
+def connected_graph?(graph)
+
+  # current_node = 0
+  visited = []
+  queue = [graph.keys[0]]
+  
+  while !queue.empty? do
+    current_node = queue.shift
+    visited << current_node
+    
+    queue << (graph[current_node] - visited)
+    # flatten! returns a new array that is a one-dimensional flattening of this array
+    queue.flatten!
+    # uniq! returns a new array by removing duplicate values in self
+    queue.uniq!
+  end
+  
+  (graph.keys - visited).empty?
+end
 
 # ******************************
 # Linked LIst
