@@ -1025,14 +1025,14 @@ puts balanced_tree?([1, 2, 3, 4, 5, 6, 7])
 # => true
 
 # ******************************
-# connected_graph
+# connected components
 # ******************************
 
 def connected_graph?(graph)
 
   # current_node = 0
   visited = []
-  queue = [graph.keys[0]]
+  queue = [0]
   
   while !queue.empty? do
     current_node = queue.shift
@@ -1049,9 +1049,44 @@ def connected_graph?(graph)
 end
 
 # ******************************
-# Linked LIst
+# find the cycles
 # ******************************
+def graph_cycle?(graph)
+  stack = [0]
+  cycle = []
+  
+  while !stack.empty? do
+    current_node = stack.shift
+     if !cycle.include?(current_node)
+      cycle << current_node
+      stack.unshift(graph[current_node] - cycle) unless graph[current_node].nil?
+      stack.flatten!
+     else
+       return true
+     end
+  end
+  false
+end
 
+
+puts graph_cycle?({
+  0=>[2], 
+  1=>[4], 
+  2=>[0, 5, 3], 
+  3=>[5, 2], 
+  4=>[5, 1], 
+  5=>[4, 2, 3]
+})
+# => true
+
+puts graph_cycle?({
+  0=>[2], 
+  1=>[2], 
+  2=>[0, 1, 3, 4, 5], 
+  3=>[2], 
+  4=>[2]
+})
+# => false
 # ******************************
 # Linked LIst
 # ******************************
