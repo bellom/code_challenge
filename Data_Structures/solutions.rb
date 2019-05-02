@@ -151,7 +151,6 @@ class Node
   end
   
   
-  
   list = LinkedList.new
   
   list.add(3)
@@ -1087,6 +1086,7 @@ puts graph_cycle?({
   4=>[2]
 })
 # => false
+
 # ******************************
 # Linked LIst
 # ******************************

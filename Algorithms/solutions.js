@@ -99,9 +99,32 @@ function angryProfessor(k, a) {
 }
 
 // ******************************
-// Linked LIst
+// Cavity Map
 // ******************************
+// Complete the cavityMap function below.
+function cavityMap(grid) {
+    for (let i = 1; i < grid.length - 1; i++) {
+        for (let j = 1; j < grid[i].length - 1; j++) {
+            if (grid[i][j] > grid[i][j + 1] && grid[i][j] > grid[i][j - 1] &&
+                grid[i][j] > grid[i - 1][j] && grid[i][j] > grid[i + 1][j]) {
+                    
+                let toString = grid[i].split('');
+                toString.splice(j, 1, 'X');
+                toString = toString.join('');
+                grid[i] = toString;
+            }
+        }
+    }
+    return grid;
+}
 
+for i in 0..map.length -1 do
+     for j in i..map.length -1 do
+        if (grid[i][j] > grid[i][j + 1] && grid[i][j] > grid[i][j - 1] &&
+            grid[i][j] > grid[i - 1][j] && grid[i][j] > grid[i + 1][j]) {
+        end
+    end
+end
 // ******************************
 // Linked LIst
 // ******************************
