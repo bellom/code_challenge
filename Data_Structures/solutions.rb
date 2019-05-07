@@ -1088,20 +1088,52 @@ puts graph_cycle?({
 # => false
 
 # ******************************
-# Linked LIst
+# Greatest peak's
 # ******************************
 
-# ******************************
-# Linked LIst
-# ******************************
+
 
 # ******************************
-# Linked LIst
+# explorer_maze
 # ******************************
 
+
+
 # ******************************
-# Linked LIst
+# Sets
 # ******************************
+require 'set'
+
+def find_duplicates(array)
+  # write your code here
+  result = Set.new
+  dup = []
+  array.each do |i| 
+    if result.include?(i) ? dup << i : result.add(i)
+    end
+  end
+  dup
+end
+
+p find_duplicates([1, 2, 3, 1, 5, 6, 7, 8, 5, 2])
+# => [1, 5, 2]
+
+# ******************************
+# Maps
+# ******************************
+def appears_most_times(array)
+  # write your code here
+  map = Hash.new
+  
+  array.each do |i| 
+    if map.key?(i) ? map[i] += 1 : map[i] = 1
+    end
+  end
+  map.key(map.values.max )
+end
+
+puts appears_most_times([1, 2, 3, 1, 5])
+# => 1
 
 # ******************************
 # Linked LIst
