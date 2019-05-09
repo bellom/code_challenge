@@ -1096,7 +1096,72 @@ puts graph_cycle?({
 # ******************************
 # explorer_maze
 # ******************************
+def maze_escape(maze)
+  # write your code here
+  nodes_to_visit = [[0,0]]
+  visited = []
+  
+  distance = { 0 => 0 }
+  predecessor = { 0 => 0 }
+  (1...maze.size*maze.size).each do |i| 
+    distance[i] = maze.size * maze.size
+    predecessor[i] = nil
+  end
+  
+  while !nodes_to_visit.empty? do
+    current_node = nodes_to_visit.shift;
+    neighboors = get_neighboors(current_node, maze.size)
+    
+    neighboors_to_add = neighboors.reject {|pos| visited.include?(pos) || nodes_to_visit.include?(pos)}
+    neighboors_to_add = neighboors_to_add.reject {|pos| maze[pos[0]][pos[1]] == 1}
+    
+    
+    neighboors_to_add.each do |pos|
+      if (distance[get_index(pos, maze.size)].nil? || 
+            distance[get_index(pos, maze.size)] > distance[get_index(current_node, maze.size)] + 1)
+        distance[get_index(pos, maze.size)] = distance[get_index(current_node, maze.size)] + 1
+        predecessor[get_index(pos, maze.size)] = current_node
+      end
+    end
+    
+    visited << current_node
+    nodes_to_visit += neighboors_to_add
+  end
 
+  # find the position of 9
+  goal_index = maze.flatten.index(9)
+  
+  # p predecessor
+  
+  # construct the result
+  node = goal_index
+  result = [[node/maze.size, node%maze.size].reverse]
+  while node != 0
+    result.unshift(predecessor[node].reverse)
+    node = get_index(predecessor[node], maze.size) unless predecessor[node].nil?
+    
+    break if predecessor[node].nil?
+  end
+  # result.unshift([node/maze.size, node%maze.size])
+  
+  return result
+end
+
+def get_neighboors(pos, size) 
+  neighboors = []
+  i,j = pos[0], pos[1]
+  
+  neighboors << [i-1, j] unless i == 0
+  neighboors << [i, j+1] unless j == size - 1
+  neighboors << [i+1, j] unless i == size - 1
+  neighboors << [i, j-1] unless j == 0
+  
+  return neighboors
+end
+
+def get_index(pos, size) 
+  return pos[0]*size + pos[1]  
+end
 
 
 # ******************************
@@ -1136,12 +1201,43 @@ puts appears_most_times([1, 2, 3, 1, 5])
 # => 1
 
 # ******************************
-# Linked LIst
+# Hash Tables
 # ******************************
+def hash_table(arr)
+  arr.sort_by{|i| i.abs % 11}
+end
+
+# OR 
+
+def 
+  
+end
+
+
 
 # ******************************
-# Linked LIst
+# Prime Number
 # ******************************
+require 'set'
+require 'prime'
+
+def number_of_primes(arr)
+  num = 10000
+  primes = Prime::EratosthenesGenerator.new.take_while {|i| i <= num}
+  
+  arr.count {|i| primes.include?(i)}
+end
+
+
+puts number_of_primes([2, 3, 5, 6, 9])
+# => 3
+
+puts number_of_primes([121, 17, 21, 29, 11, 341, 407, 19, 119, 352])
+# => 4
+
+puts number_of_primes([7, 6, 7, 3, 77, 14, 28, 35, 42])
+# => 3
+
 
 # ******************************
 # Linked LIst
