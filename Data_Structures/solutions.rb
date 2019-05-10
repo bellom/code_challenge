@@ -1255,8 +1255,52 @@ puts number_of_primes([7, 6, 7, 3, 77, 14, 28, 35, 42])
 
 
 # ******************************
-# Linked LIst
+# prime Prime
 # ******************************
+require 'prime'
+
+def prime_prime(arr)
+  num = 10000
+  primes = Prime::EratosthenesGenerator.new.take_while {|i| i <= num}
+  
+  hash = Hash.new(0)
+  arr.each do |n|
+    primes.each do |p|
+      if n % p == 0
+        if hash[p] ? hash[p] += 1 : hash[p] = 1
+        end
+      end
+    end
+  end
+  hash.key(hash.values.max)
+end
+
+# OR
+
+# def prime_prime(arr)
+#   num = 10000
+#   primes = Prime::EratosthenesGenerator.new.take_while {|i| i <= num}
+  
+#   hash = Hash.new(0)
+#   arr.each do |n|
+#     primes.each {|p| hash[p] += 1 if n % p == 0}
+#   end
+#   hash.key(hash.values.max)
+# end
+
+
+
+puts prime_prime([2, 3, 5, 6, 9])
+# => 3
+
+puts prime_prime([121, 17, 21, 29, 11, 341, 407, 19, 119, 352])
+# => 11
+
+puts prime_prime([7, 6, 7, 3, 77, 14, 28, 35, 42])
+# => 7
+
+
+
 
 # ******************************
 # Linked LIst
@@ -1385,3 +1429,31 @@ puts number_of_primes([7, 6, 7, 3, 77, 14, 28, 35, 42])
 # ******************************
 # Linked LIst
 # ******************************
+
+
+def get_primes(ar)
+  primes = []
+
+  ar.each do |num|
+    primes << num if num == 2
+    primes << num if (2..num-1).all?{ |div| num % div != 0 } unless num == 2
+  end
+
+  primes
+end
+
+def prime_prime(ar)
+  ocurrences = Hash.new(0)
+  primes = get_primes(ar)
+  primes.each do |p|
+    ar.each do |n|
+      if n % p == 0
+        if ocurrences.key?(p) ? ocurrences[p] += 1 : ocurrences[p] = 1
+        end
+      end
+    end
+  end
+
+  ocurrences.key(ocurrences.values.max)
+
+end
