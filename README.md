@@ -10,6 +10,9 @@
 <p align="center">
     Solutions to problems on HackerRank and Repl.
 </p>
+<p align="center">
+    <i>Use git commit title to search for Solutions.</i>
+</p>
 
 ## Javascript Algorithms Solutions
 ## Ruby Data Structures Solution 
