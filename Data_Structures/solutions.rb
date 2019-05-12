@@ -1098,7 +1098,7 @@ puts graph_cycle?({
 # ******************************
 def maze_escape(maze)
   # write your code here
-  nodes_to_visit = [[0,0]]
+  to_visit = [[0,0]]
   visited = []
   
   distance = { 0 => 0 }
@@ -1108,24 +1108,24 @@ def maze_escape(maze)
     predecessor[i] = nil
   end
   
-  while !nodes_to_visit.empty? do
-    current_node = nodes_to_visit.shift;
-    neighboors = get_neighboors(current_node, maze.size)
+  while !to_visit.empty? do
+    current = to_visit.shift;
+    sideNode = get_sideNode(current, maze.size)
     
-    neighboors_to_add = neighboors.reject {|pos| visited.include?(pos) || nodes_to_visit.include?(pos)}
-    neighboors_to_add = neighboors_to_add.reject {|pos| maze[pos[0]][pos[1]] == 1}
+    sideNodeAdd = sideNode.reject {|pos| visited.include?(pos) || to_visit.include?(pos)}
+    sideNodeAdd = sideNodeAdd.reject {|pos| maze[pos[0]][pos[1]] == 1}
     
     
-    neighboors_to_add.each do |pos|
+    sideNodeAdd.each do |pos|
       if (distance[get_index(pos, maze.size)].nil? || 
-            distance[get_index(pos, maze.size)] > distance[get_index(current_node, maze.size)] + 1)
-        distance[get_index(pos, maze.size)] = distance[get_index(current_node, maze.size)] + 1
-        predecessor[get_index(pos, maze.size)] = current_node
+            distance[get_index(pos, maze.size)] > distance[get_index(current, maze.size)] + 1)
+        distance[get_index(pos, maze.size)] = distance[get_index(current, maze.size)] + 1
+        predecessor[get_index(pos, maze.size)] = current
       end
     end
     
-    visited << current_node
-    nodes_to_visit += neighboors_to_add
+    visited << current
+    to_visit += sideNodeAdd
   end
 
   # find the position of 9
@@ -1147,21 +1147,35 @@ def maze_escape(maze)
   return result
 end
 
-def get_neighboors(pos, size) 
-  neighboors = []
+def get_sideNode(pos, size) 
+  sideNode = []
   i,j = pos[0], pos[1]
   
-  neighboors << [i-1, j] unless i == 0
-  neighboors << [i, j+1] unless j == size - 1
-  neighboors << [i+1, j] unless i == size - 1
-  neighboors << [i, j-1] unless j == 0
+  sideNode << [i-1, j] unless i == 0
+  sideNode << [i, j+1] unless j == size - 1
+  sideNode << [i+1, j] unless i == size - 1
+  sideNode << [i, j-1] unless j == 0
   
-  return neighboors
+  return sideNode
 end
 
 def get_index(pos, size) 
   return pos[0]*size + pos[1]  
 end
+
+
+
+p maze_escape(
+  [
+    [0, 0, 0, 0, 0], 
+    [0, 1, 0, 1, 0], 
+    [0, 1, 0, 1, 1], 
+    [0, 1, 0, 0, 0], 
+    [0, 0, 0, 1, 9]
+  ]
+)
+
+
 
 
 # ******************************
