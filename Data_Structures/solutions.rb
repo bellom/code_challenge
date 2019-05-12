@@ -1338,28 +1338,10 @@ def prime_prime(arr)
   
   hash = Hash.new(0)
   arr.each do |n|
-    primes.each do |p|
-      if n % p == 0
-        if hash[p] ? hash[p] += 1 : hash[p] = 1
-        end
-      end
-    end
+    primes.each {|p| hash[p] += 1 if n % p == 0}
   end
   hash.key(hash.values.max)
 end
-
-# OR
-
-# def prime_prime(arr)
-#   num = 10000
-#   primes = Prime::EratosthenesGenerator.new.take_while {|i| i <= num}
-  
-#   hash = Hash.new(0)
-#   arr.each do |n|
-#     primes.each {|p| hash[p] += 1 if n % p == 0}
-#   end
-#   hash.key(hash.values.max)
-# end
 
 
 
