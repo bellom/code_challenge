@@ -1328,7 +1328,7 @@ puts number_of_primes([7, 6, 7, 3, 77, 14, 28, 35, 42])
 
 
 # ******************************
-# prime Prime
+# Prime Prime
 # ******************************
 require 'prime'
 
@@ -1355,11 +1355,22 @@ puts prime_prime([7, 6, 7, 3, 77, 14, 28, 35, 42])
 # => 7
 
 
-
-
 # ******************************
-# Linked LIst
+# More practice
 # ******************************
+def find_pairs(array, k)
+  pairs = []
+
+  for i in 0..(array.length - 1)
+    for j in (i+1)..(array.length - 1)
+      pairs.push(array[i], array[j]) if array[i] + array[j] == k
+    end
+  end
+  result = pairs.each_slice(2).to_a
+end
+
+p find_pairs([1, 9, 11, 13, 2, 3, 7], 12)
+# => [[1, 11], [9, 3]]
 
 # ******************************
 # Linked LIst
