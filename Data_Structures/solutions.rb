@@ -1373,9 +1373,21 @@ p find_pairs([1, 9, 11, 13, 2, 3, 7], 12)
 # => [[1, 11], [9, 3]]
 
 # ******************************
-# Linked LIst
+# insertion sort 1
 # ******************************
-
+def insertion_sort(arr)
+  for i in 1..(arr.lenghth - 1)
+    value = arr[i]
+    j = i
+    while j > 0 && arr[j-1] > value
+      arr[i] = arr[j-1]
+      puts arr.join(' ')
+      j -= 1
+    end
+    arr[i] = value
+  end
+  puts arr.join(' ')
+end
 # ******************************
 # Linked LIst
 # ******************************
