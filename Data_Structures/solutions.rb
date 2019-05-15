@@ -1380,18 +1380,29 @@ def insertion_sort(arr)
     value = arr[i]
     j = i
     while j > 0 && arr[j-1] > value
-      arr[i] = arr[j-1]
+      arr[j] = arr[j-1]
       puts arr.join(' ')
       j -= 1
     end
-    arr[i] = value
+    arr[j] = value
   end
   puts arr.join(' ')
 end
 # ******************************
-# Linked LIst
+# insertion sort itself
 # ******************************
-
+def sort_itself(array)
+  for i in 1..(array.length - 1)
+    value = array(i)
+    j = i 
+    while j > 0 && array[j-1] > value
+      array[j] = array[j-1]
+      j -= 1
+    end
+    array[j] = value
+    puts array.join(' ')
+  end
+end
 # ******************************
 # Linked LIst
 # ******************************
