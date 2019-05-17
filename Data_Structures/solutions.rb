@@ -1404,8 +1404,26 @@ def sort_itself(array)
   end
 end
 # ******************************
-# Linked LIst
+# Running time
 # ******************************
+def running_time(arr)
+  # write your code here
+  count = 0
+  for i in 1..(arr.length - 1)
+    value = arr[i]
+    j = i 
+    while j > 0 && arr[j-1] > value
+      arr[j] = arr[j-1]
+      j -= 1
+      count += 1
+    end
+    arr[j] = value
+  end
+    count
+end
+
+puts running_time([2, 1, 3, 1, 2])
+# => 4
 
 # ******************************
 # Linked LIst
