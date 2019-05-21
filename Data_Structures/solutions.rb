@@ -1449,7 +1449,7 @@ def simple_counting_sort(array)
   array.sort_by {|i| i * ascend}
 end
 # ******************************
-# preapare for full counting sort
+# prepare for full counting sort
 # ******************************
 def full_counting_sort_prep(array)
   # write your code here
