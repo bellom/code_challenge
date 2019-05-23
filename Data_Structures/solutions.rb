@@ -1466,12 +1466,23 @@ def full_counting_sort_prep(array)
 end
 
 # ******************************
-# Linked LIst
+# full counting sort
 # ******************************
 
+
 # ******************************
-# Linked LIst
+# quick sort1
 # ******************************
+def partition(array)
+  first = array[0]
+  r = []
+  l = []
+
+  for i in 1..(array.length - 1)
+    first > array[i] ? l << array[i] :  r <<  array[i]
+  end
+  l + [first] + r
+end
 
 # ******************************
 # Linked LIst
