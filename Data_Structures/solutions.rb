@@ -1485,8 +1485,34 @@ def partition(array)
 end
 
 # ******************************
-# Linked LIst
+# simple quick sort
 # ******************************
+def partition(array)
+  return array if array.length < 2
+  first = array[0]
+  r = []
+  l = []
+
+  for i in 1..(array.length - 1)
+    first > array[i] ? l << array[i] :  r <<  array[i]
+  end
+  l = partition(l)
+  r = partition(r)
+  result = l + [first] + r
+  puts result.join(" ")
+  result
+end
+
+def simple_quicksort(array)
+  # write your code here 
+  partition(array)
+end
+
+p simple_quicksort([5, 8, 1, 3, 7, 10, 2])
+# => 2 3
+#    1 2 3
+#    7 8 10
+#    1 2 3 5 7 8 10
 
 # ******************************
 # Linked LIst
