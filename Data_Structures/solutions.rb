@@ -1564,9 +1564,21 @@ p merge_sort([1, 3, 9, 11], [2, 4, 6, 8])
 # => [1, 2, 3, 4, 6, 8, 9, 11]
 
 # ******************************
-# Linked LIst
+# Index match
 # ******************************
+def index_match(array)
+  # write your code here
+  array.each do |i| 
+    if array[i] == i
+      res = array[i]
+      return res
+    end
+  end
+    -1
+end
 
+index_match([0, 2, 3, 7, 9, 11])
+# => 0
 # ******************************
 # Linked LIst
 # ******************************
