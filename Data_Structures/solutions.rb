@@ -1709,6 +1709,43 @@ p merge_sort([1, 3, 9, 11], [2, 4, 6, 8])
 # => [1, 2, 3, 4, 6, 8, 9, 11]
 
 # ******************************
+# full merge sort
+# ******************************
+def full_merge_sort(array)
+  # write your code here
+  hash = {}
+  
+  ar = array.map {|el| 
+    i,s = el.split(' ')
+    hash.has_key?(i) ? hash[i] << s : hash[i] = [s] 
+    i.to_i
+  }
+  
+  ar = counting_sort(ar)
+  output = []
+  i = 0 
+  while i < ar.length
+    output << hash[i.to_s] if ar[i] > 0
+    i += 1
+  end
+  output.flatten
+end
+
+def counting_sort(array)
+  # write your code here
+  counts = Array.new(100, 0)
+  
+  array.each do |i|
+    counts[i] += 1
+  end
+  counts
+  
+end
+
+full_merge_sort(["0 ab", "6 cd", "0 ef", "6 gh", "4 ij", "0 ab", "6 cd", "0 ef", "6 gh", "0 ij", "4 that", "3 be", "0 to", "1 be", "5 question", "1 or", "2 not", "4 is", "2 to", "4 the"])
+# => ["ab", "ef", "ab", "ef", "ij", "to", "be", "or", "not", "to", "be", "ij", "that", "is", "the", "question", "cd", "gh", "cd", "gh"]
+
+# ******************************
 # Index match
 # ******************************
 def index_match(array)
@@ -1724,9 +1761,6 @@ end
 
 index_match([0, 2, 3, 7, 9, 11])
 # => 0
-# ******************************
-# Linked LIst
-# ******************************
 
 # ******************************
 # Linked LIst
