@@ -1763,20 +1763,29 @@ index_match([0, 2, 3, 7, 9, 11])
 # => 0
 
 # ******************************
-# Linked LIst
+# Time Scheduler
 # ******************************
 
 # ******************************
-# Linked LIst
+# Maximum Time Range
 # ******************************
 
 # ******************************
-# Linked LIst
+# Smallest Difference
 # ******************************
 
 # ******************************
-# Linked LIst
+# Median
 # ******************************
+def median(array)
+  #divide the array
+  divide = array.length/2
+  sort = array.sort_by{|i| i}  
+  sort[divide]
+end
+
+puts median([0, 1, 2, 4, 6, 5, 3])
+# => 3
 
 # ******************************
 # Linked LIst
