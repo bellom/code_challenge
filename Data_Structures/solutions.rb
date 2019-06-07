@@ -1773,6 +1773,11 @@ index_match([0, 2, 3, 7, 9, 11])
 # ******************************
 # Smallest Difference
 # ******************************
+def smallest_difference(array)
+  array.combination(2).min_by {|a,b| (a-b).abs}.sort
+end
+
+p smallest_difference([-20, -3916237, -357920, -3620601, 7374819, -7330761, 30, 6246457, -6461594, 266854])
 
 # ******************************
 # Median
