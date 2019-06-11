@@ -1793,8 +1793,14 @@ puts median([0, 1, 2, 4, 6, 5, 3])
 # => 3
 
 # ******************************
-# Linked LIst
+# find the duplicates
 # ******************************
+def duplicates(arr1, arr2)
+  arr1.each do |i|
+    arr2.delete_at(arr2.index(i))
+  end
+  arr2.sort
+end
 
 # ******************************
 # Linked LIst
