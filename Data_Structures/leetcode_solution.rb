@@ -28,6 +28,18 @@ end
 # ******************************
 # container with most water
 # ******************************
+def max_area(height)
+    max = 0
+    i = 0
+    j = height.length - 1
+    
+  while i < j
+    area = (j - i) * [height[i], height[j]].min
+    max = [max, area].max
+    height[i] > height[j] ? j -= 1 : i += 1
+  end
+  max
+end
 
 # ******************************
 # 
