@@ -135,9 +135,22 @@ def longest_palindrome(s)
 end
 
 # ******************************
-# 
+# Regular Expression Matching
 # ******************************
-
+def is_match(s, p)
+  # s =~ /(#{p})/ 
+  # $1 == s ? true : false
+  
+  return s.empty? if p.empty?
+  match1 = [s[0], '.'].include?(!s.empty? && p[0])
+  
+  if p.length > 1 && p[1] == '*'
+      return is_match(s,p[2..-1]) || (match1 && is_match(s[1..-1], p))
+  else
+      return match1 && is_match(s[1..-1], p[1..-1])
+  end
+  
+end
 # ******************************
 # 
 # ******************************
