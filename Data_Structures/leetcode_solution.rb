@@ -1,7 +1,6 @@
 # ******************************
-# Two Sum
+# Two Sum 
 # ******************************
-
 def two_sum(nums, target)
     # hash = {}
     # nums.each_with_index do |i, index|
