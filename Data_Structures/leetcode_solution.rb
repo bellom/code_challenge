@@ -61,10 +61,26 @@ def add_two_numbers(l1, l2)
   end
   dummy.next
 end
-# ******************************
-# 
-# ******************************
 
+# ******************************
+# Longest Substring Without Repeating Characters
+# ******************************
+def length_of_longest_substring(s)
+  # s.chars.uniq.count { |char| s.count(char) > 1 }
+  
+  stack = []
+  high_count = 0
+  s.each_char do |i|
+      unless index = stack.index(i)
+          stack.push(i)
+      else
+          stack.push(i)
+          (index + 1).times {stack.shift}
+      end
+      high_count = stack.length if stack.length > high_count
+  end
+  high_count
+end
 # ******************************
 # 
 # ******************************
