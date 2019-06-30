@@ -82,9 +82,36 @@ def length_of_longest_substring(s)
   high_count
 end
 # ******************************
-# 
+# Median of Two Sorted Arrays
 # ******************************
+def find_median_sorted_arrays(nums1, nums2)
+  combined_arr = []
+  while !nums1.empty? && !nums2.empty?
+      if nums1[0] <= nums2[0]
+          combined_arr << nums1.shift
+      else
+          combined_arr << nums2.shift
+      end
+  end
+  done = nums1.length <= nums2.length ? 1 : 2
+  if done == 1
+      combined_arr += nums2
+  else
+      combined_arr += nums1
+  end
+  median(combined_arr)
+end
 
+
+def median(combined_arr)
+  l = combined_arr.length - 1
+  half_i = l / 2
+  if l % 2 == 0 
+      combined_arr[half_i]
+  else 
+      (combined_arr[half_i] + combined_arr[half_i + 1]) / 2.0  
+  end
+end
 # ******************************
 # 
 # ******************************
