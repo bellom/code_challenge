@@ -194,9 +194,21 @@ def letter_combinations(digits)
   result
 end
 # ******************************
-# 
+# Remove Nth Node From End of List
 # ******************************
-
+def remove_nth_from_end(head, n)
+  return nil unless head.next
+  count = 0
+  h, p = head, head
+  while h
+    p = p.next if count > n
+    h = h.next
+    count += 1
+  end
+  return head.next if count == n
+  p.next = p.next.next
+  head
+end
 # ******************************
 # 
 # ******************************
