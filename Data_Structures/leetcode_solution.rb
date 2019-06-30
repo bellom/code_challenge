@@ -41,9 +41,26 @@ def max_area(height)
 end
 
 # ******************************
-# 
+# Add Two Numbers
 # ******************************
-
+def add_two_numbers(l1, l2)
+  dummy = current = ListNode.new(0)
+  carry = 0
+  while l1 || l2 || carry > 0
+      if l1
+          carry += l1.val
+          l1 = l1.next
+      end
+      if l2
+          carry += l2.val
+          l2 = l2.next
+      end
+      current.next = ListNode.new(carry % 10)
+      current = current.next
+      carry = (carry / 10).floor
+  end
+  dummy.next
+end
 # ******************************
 # 
 # ******************************
