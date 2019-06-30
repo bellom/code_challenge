@@ -176,9 +176,23 @@ def three_sum(nums)
   result
 end
 # ******************************
-# 
+# Letter Combinations of a Phone Number
 # ******************************
-
+def letter_combinations(digits)
+  return [] if digits.empty?
+  letters = ['','','abc','def','ghi','jkl','mno','pqrs','tuv','wxyz']
+  result = ['']
+  (0..digits.size-1).each do |i|
+    comb = []
+    result.each do |j|
+      letters[digits[i].to_i].chars.each do |k|
+        comb << j + k
+      end
+    end
+    result = comb
+  end
+  result
+end
 # ******************************
 # 
 # ******************************
