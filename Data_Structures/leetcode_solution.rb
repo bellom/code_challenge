@@ -152,9 +152,29 @@ def is_match(s, p)
   
 end
 # ******************************
-# 
+# 3 Sum
 # ******************************
-
+def three_sum(nums)
+  nums.sort!
+  result = []
+  (0..(nums.length-3)).each do |a|
+      b = a + 1
+      c = nums.length - 1
+      while(b < c) do
+          target = 0 - (nums[a] + nums[b])
+          if nums[c] < target
+              break
+          elsif nums[c] > target
+              c -= 1
+          else
+              result << [nums[a], nums[b], nums[c]]
+              b += 1
+              c -= 1
+          end
+      end
+  end
+  result
+end
 # ******************************
 # 
 # ******************************
