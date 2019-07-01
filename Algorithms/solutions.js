@@ -118,13 +118,6 @@ function cavityMap(grid) {
     return grid;
 }
 
-for i in 0..map.length -1 do
-     for j in i..map.length -1 do
-        if (grid[i][j] > grid[i][j + 1] && grid[i][j] > grid[i][j - 1] &&
-            grid[i][j] > grid[i - 1][j] && grid[i][j] > grid[i + 1][j]) {
-        end
-    end
-end
 // ******************************
 // Linked LIst
 // ******************************

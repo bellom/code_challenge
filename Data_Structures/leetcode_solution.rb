@@ -210,8 +210,23 @@ def remove_nth_from_end(head, n)
   head
 end
 # ******************************
-# 
+# valid parentheses
 # ******************************
+def is_valid(s)
+  return true if s.empty?
+  stack = []
+  hash = { '}' => '{', ']' => '[', ')' => '(' }
+  s.split("").each do |i|
+      if hash.values.include?(i)
+          stack << i
+      else
+          return false if stack.pop != hash[i]
+      end
+  end
+  stack.empty?
+end
+
+p is_valid("{{[]()[")
 
 # ******************************
 # 
