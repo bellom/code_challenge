@@ -231,11 +231,34 @@ p is_valid("{{[]()[")
 # ******************************
 # 
 # ******************************
+def merge_two_lists(l1, l2)
+    
+  return l1 if not l2
+  return l2 if not l1
+    
+  l1,l2 = l2, l1 if l1.val > l2.val
+  l1.next=merge_two_lists(l1.next,l2)
+  l1
+end
 
+p merge_two_lists(1->2->4, 1->3->4)
 # ******************************
-# 
+# Generate Parentheses   
 # ******************************
+def generate_parenthesis(n)
+  recursive(n, 0, 0, "",[])
+end
 
+def recursive(n,j,k,hold,result)
+  #push hold to result if k+j == 2*n
+  result << hold if j + k == 2 * n
+
+  recursive(n, j+1, k, hold + "(", result) if j < n
+  recursive(n, j, k+1, hold + ")", result) if k < j
+
+  result
+end
+    
 # ******************************
 # 
 # ******************************
