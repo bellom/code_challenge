@@ -260,9 +260,18 @@ def recursive(n,j,k,hold,result)
 end
     
 # ******************************
-# 
+# Merge k Sorted Lists
 # ******************************
-
+def merge_k_lists(lists)
+  newList = []
+  lists.each do |i|
+    while i != nil
+      newList << i.val
+      i = i.next
+    end
+  end
+  newList.sort!
+end
 # ******************************
 # 
 # ******************************
