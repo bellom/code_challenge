@@ -272,10 +272,36 @@ def merge_k_lists(lists)
   end
   newList.sort!
 end
-# ******************************
-# 
-# ******************************
 
+# ******************************
+#  Next Permutation    
+# ******************************
+var nextPermutation = function(nums) {
+    let idx = nums.length - 1
+    // find an index where the descending order starts
+    // e.g. nums = [1,2,3,6,5,4] the index is nums[3] = 6
+    while (nums[idx] <= nums[idx-1]) idx--
+    
+    // swap the number before the descending order with the next large number
+    // e.g. nums = [1,2,3,6,5,4], swap nums[2] = 3 <=> nums[5] = 4 to be [1,2,4,6,5,3]
+    let left = idx - 1,
+        right = nums.length -1
+    while (nums[left] >= nums[right]) right--
+    if (left >= 0 && right >= 0) {
+        ;[nums[left], nums[right]] = [nums[right], nums[left]]
+    }
+
+    // reverse the rest numbers
+    // e.g. nums = [1,2,3,6,5,4] after swapping is [1,2,4,6,5,3]
+    // then reverse the rest numbers to be [1,2,4,3,5,6]
+    left = idx,
+    right = nums.length - 1
+    while (left < right) {
+        ;[nums[left], nums[right]] = [nums[right], nums[left]]
+        left++
+        right--
+    }
+};
 # ******************************
 # 
 # ******************************
