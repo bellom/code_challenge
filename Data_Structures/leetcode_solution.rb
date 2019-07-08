@@ -229,7 +229,7 @@ end
 p is_valid("{{[]()[")
 
 # ******************************
-# 
+# merge_two_lists
 # ******************************
 def merge_two_lists(l1, l2)
     
@@ -303,8 +303,23 @@ var nextPermutation = function(nums) {
     }
 };
 # ******************************
-# 
+# longest_valid_parentheses
 # ******************************
+def longest_valid_parentheses(s)
+  stack,max_len = [-1],0
+  s.length.times do |i|
+    top = stack.last
+    if top!=-1 && s[top] =='(' && s[i] ==')'
+      stack.pop
+      max_len = [max_len,i-stack.last].max
+    else
+      stack << i
+    end
+  end
+  max_len
+end
+
+p longest_valid_parentheses(")()())")
 
 # ******************************
 # 
