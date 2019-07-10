@@ -333,9 +333,19 @@ def search(nums, target)
   
 end
 p search([[4,5,6,7,0,1,2], 4])
+
 # ******************************
-# 
+# Find First and Last Position of Element in Sorted Array
 # ******************************
+def search_range(nums, target)
+  res = []
+  if nums.include?(target)
+      res << nums.index(target)
+      res << nums.rindex(target)
+  else
+      return [-1,-1]
+  end
+end
 
 # ******************************
 # 
