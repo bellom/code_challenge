@@ -348,8 +348,31 @@ def search_range(nums, target)
 end
 
 # ******************************
-# 
+# Combination Sum
 # ******************************
+def combination_sum(candidates, target)
+  candidates.sort!
+  comb = []
+  results = []
+  find_comb_sum(results, comb, candidates, target, 0)
+  return results
+end
+
+def find_comb_sum(results, comb, candidates, target, startIndex)
+  if target == 0
+    return (results << comb.dup)
+  end
+  for i in startIndex...candidates.length
+    if(candidates[i] > target)
+      return;
+    end
+
+    comb << candidates[i]
+    find_comb_sum(results, comb, candidates, target - candidates[i], i)
+    comb.pop
+
+  end
+end
 
 # ******************************
 # 
