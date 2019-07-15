@@ -415,9 +415,24 @@ def tallest_between(heights, a, b)
 end
 
 # ******************************
-# 
+# Permutations
 # ******************************
+# The idea is to iterate through the nums array and tack on the 
+# current element to each permutation of the surrounding elements.
+def permute(nums)
+  #permutation = perm; index = idx
+  perm = []
 
+  perm << [] if nums.empty?
+
+  nums.each_with_index do |i, idx|
+    perm_last = permute(nums[0...idx] + nums[idx+1..-1])
+    perm_last.each do |j|
+      perm << [i] + j
+    end
+  end
+  perm
+end
 # ******************************
 # 
 # ******************************
