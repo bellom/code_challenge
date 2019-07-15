@@ -375,8 +375,44 @@ def find_comb_sum(results, comb, candidates, target, startIndex)
 end
 
 # ******************************
-# 
+# Trapping Rain Water
 # ******************************
+def trap(heights)   
+  return 0 if heights.empty?
+  
+  tallest_x = tallest_between(heights, 0, heights.length-1)
+  trap_left(heights, 0, tallest_x) + trap_right(heights, tallest_x, heights.length-1)
+end
+
+def trap_left(heights, a, b)
+  return 0 if a == b || a + 1 == b
+  tallest_x = tallest_between(heights, a, b-1)
+  volume_between(heights, tallest_x, b) + trap_left(heights, a, tallest_x)
+end
+
+def trap_right(heights, a, b)
+  return 0 if a == b || a + 1 == b
+  tallest_x = tallest_between(heights, a+1, b)
+  volume_between(heights, a, tallest_x) + trap_right(heights, tallest_x, b)
+end
+
+def volume_between(heights, a, b)
+  height = [heights[b], heights[a]].min
+  (a+1...b).reduce(0) do |acc, i|
+      acc + height - heights[i]
+  end
+end
+
+def tallest_between(heights, a, b)
+  height = 0
+  tallest_x = a
+  (a..b).each do |x|
+      next if heights[x] <= height
+      height = heights[x]
+      tallest_x = x
+  end
+  tallest_x
+end
 
 # ******************************
 # 
