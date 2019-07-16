@@ -434,9 +434,11 @@ def permute(nums)
   perm
 end
 # ******************************
-# 
+# Rotate Image
 # ******************************
-
+def rotate(matrix)
+  matrix.replace(matrix.reverse.transpose)
+end
 # ******************************
 # 
 # ******************************
