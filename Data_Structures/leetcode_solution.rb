@@ -439,12 +439,20 @@ end
 def rotate(matrix)
   matrix.replace(matrix.reverse.transpose)
 end
-# ******************************
-# 
-# ******************************
+
+p rotate([[1,2,3],[4,5,6],[7,8,9]])
 
 # ******************************
-# 
+# Group Anagrams
+# ******************************
+def group_anagrams(strs)
+  # group chars
+  # split and sort chars, so bca => abc
+  return strs.group_by {|str| str.split('').sort }.values
+end
+
+# ******************************
+# Maximum Subarray
 # ******************************
 
 # ******************************
