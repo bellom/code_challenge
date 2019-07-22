@@ -454,11 +454,18 @@ end
 # ******************************
 # Maximum Subarray
 # ******************************
-
-# ******************************
-# 
-# ******************************
-
+def max_sub_array(arr)
+  pre = cur = arr[0]
+  for i in 1...arr.length
+    # should we continue our streak, or restart here?
+    pre = [pre + arr[i], arr[i]].max
+    
+    # track the highest pre we've seen so far
+    cur = [pre, cur].max # global max of all pre's
+  end
+  
+  return cur # return the global max
+end
 # ******************************
 # 
 # ******************************
