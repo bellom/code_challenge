@@ -455,21 +455,48 @@ end
 # Maximum Subarray
 # ******************************
 def max_sub_array(arr)
-  pre = cur = arr[0]
+  # equal pre and cur to be first index
+  previous = current = arr[0]
+  # loop over the arr and set pre to be the max of pre+cur_index and cur_index
   for i in 1...arr.length
-    # should we continue our streak, or restart here?
-    pre = [pre + arr[i], arr[i]].max
-    
-    # track the highest pre we've seen so far
-    cur = [pre, cur].max # global max of all pre's
+      previous  = [previous + arr[i], arr[i]].max
+  # set cur to be the max of all pre's and cur's
+  current  = [previous, current].max
   end
-  
-  return cur # return the global max
+  current
 end
-# ******************************
-# 
-# ******************************
+p max_sub_array([-2,1,-3,4,-1,2,1,-5,4])
 
+# ******************************
+# Jump Game 
+# ******************************
+def can_jump(nums)
+  return true if nums.length < 2
+  current = nums.length - 1
+  distance = 0
+  while current > 0
+    current -= 1
+    distance += 1
+    if nums[current] >= distance
+      distance = 0
+    end
+  end
+  return distance == 0
+end
+
+p can_jump([2,3,1,1,4])
+
+#--------------------------------------------------------------------------
+function canJump(nums) {
+  let max = nums[0];
+
+  for (let i = 1; i < nums.length; i++) {
+    if (max < i) return false;
+    max = Math.max(nums[i] + i, max);
+  }
+
+  return true;
+}
 # ******************************
 # 
 # ******************************
