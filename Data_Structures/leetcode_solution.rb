@@ -522,8 +522,25 @@ def merge(intervals)
 end
 
 # ******************************
-# 
+# Unique Path
 # ******************************
+var uniquePaths = function(m, n) {
+    if(m === 1 || n === 1) return 1;
+    if(m < n) return  uniquePaths(n, m);
+    let arr = Array.from({length: n}, (a,b) => 1);
+    for(let i = 1; i < m; i++){
+        for(let j = 1; j < n ; j++){
+            arr[j] += arr[j - 1];
+        }
+    }
+    return arr[n - 1];
+};
+
+#------------------------------------------------
+def unique_paths(m, n)
+  # https://apidock.com/ruby/Enumerable/inject
+  (m..m+n-2).inject(1, :*) / (1...n).inject(1, :*)
+end
 
 # ******************************
 # 
