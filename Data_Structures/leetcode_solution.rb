@@ -545,6 +545,20 @@ end
 # ******************************
 # Climb Stairs
 # ******************************
+def climb_stairs(n)
+  return 0 if n == 0
+  return 1 if n == 1
+  return 2 if n == 2
+  i,j = 1,2
+  (n-3).times do
+      temp = i
+      i = j
+      j = i + temp
+  end
+  i + j
+  
+end
+# -----------------------------------------------
 var climbStairs = (n) => {
     if(n <= 2) return n
     let first  = 1
