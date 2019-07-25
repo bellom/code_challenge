@@ -498,8 +498,28 @@ function canJump(nums) {
   return true;
 }
 # ******************************
-# 
+# Merge Intervals
 # ******************************
+def merge(intervals)
+  # create an array
+  res = []
+  # if args is null or empty return the array
+  return res if !intervals || intervals.empty?
+  # sort arg
+  intervals.sort!
+  # loop over arg and create variable holding the last item in the array
+  intervals.each do |i|
+      last = res.last
+  # push iterate into array if iterate is greater than last item in position 1
+      if last.nil? || i[0] > last[1]
+          res << i
+      else
+  # else set last item to iterate in position 1
+    last[1] = i[1] if i[1] > last[1]
+      end
+  end
+  res
+end
 
 # ******************************
 # 
