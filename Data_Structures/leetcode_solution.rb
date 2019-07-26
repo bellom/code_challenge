@@ -575,6 +575,43 @@ var climbStairs = (n) => {
 # ******************************
 # 
 # ******************************
+  # m and n represent number of columns and rows
+  # Does modify original grid
+  # row length = grid.length
+  # col length = grid.first.length
+
+var minPathSum = (grid) => {
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[0].length; j++) {
+            
+            if (i === 0 && j === 0) continue
+            
+            const row = j - 1 >= 0 ? grid[i][j - 1] : Infinity;
+            const col = i - 1 >= 0 ? grid[i - 1][j] : Infinity;    
+            
+            grid[i][j] = Math.min(row + grid[i][j], col + grid[i][j]);
+        }
+    }
+    return grid[grid.length - 1][grid[0].length - 1];
+};
+
+# -------------------------------------------------
+
+def min_path_sum(grid)
+  
+  (0...grid.length).each do |i|
+    (0...grid[0].length).each do |j|
+      next if (i == 0) && (j == 0)
+      
+      row_val = (i - 1) < 0 ? grid[i][j-1] : grid[i-1][j]
+      col_val = (j - 1) < 0 ? grid[i-1][j] : grid[i][j-1]
+      
+      grid[i][j] += [row_val, col_val].min    
+    end
+  end
+  
+  grid.last.last
+end
 
 # ******************************
 # 
