@@ -573,7 +573,7 @@ var climbStairs = (n) => {
     return result
 }
 # ******************************
-# 
+# Minimum Path Sum
 # ******************************
   # m and n represent number of columns and rows
   # Does modify original grid
@@ -614,8 +614,72 @@ def min_path_sum(grid)
 end
 
 # ******************************
-# 
+# Edit Distance
 # ******************************
+const minDistance = (A, B) => {
+  const a = A.length
+  const b = B.length
+
+  const newArr = [...Array(a)].map(() => Array(b).fill(-1))
+
+  const prefixDist = (i, j) => {
+    if (i < 0) return j + 1
+    if (j < 0) return i + 1
+
+    if (newArr[i][j] === -1) {
+      if (A[i] === B[j]) {
+        newArr[i][j] = prefixDist(i - 1, j - 1)
+      } else {
+        newArr[i][j] = 1 + Math.min(
+          prefixDist(i - 1, j - 1), // replace
+          prefixDist(i, j - 1), // insert 
+          prefixDist(i - 1, j) // delete
+        )
+      }
+    }
+
+    return newArr[i][j]
+  }
+
+  return prefixDist(a - 1, b - 1)
+}
+
+#------------------------------------------------------
+
+def min_distance(word1, word2)
+  # created new nested arrays
+  newArr = Array.new(word1.size + 1) { Array.new(word2.size + 1) }
+  
+  # loop over the 1st array created with row
+  for i in 0...newArr.size
+     newArr[i][0] = i 
+  end
+  
+  # loop over the array with col
+  for j in 0...newArr[0].size
+      newArr[0][j] = j
+  end
+  
+  # loop over both arrays - useing nested loop
+  for i in 1...newArr.size
+      for j in 1...newArr[0].size
+          
+          # check 
+          if word1[i - 1] == word2[j - 1]
+              puts ([j-1]);
+              newArr[i][j] = newArr[i-1][j-1]
+          else
+              newArr[i][j] = [
+                  newArr[i - 1][j],
+                  newArr[i][j - 1],
+                  newArr[i - 1][j - 1],
+              ].min + 1
+          end
+      end
+  end
+  
+  newArr[-1][-1]
+end
 
 # ******************************
 # 
