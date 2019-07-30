@@ -682,8 +682,32 @@ def min_distance(word1, word2)
 end
 
 # ******************************
-# 
+# Sort Color
 # ******************************
+
+
+#----------------------------------------
+
+var sortColors = function(nums) {
+    var i = 0;
+    var newArr = [];
+    
+    while (i < nums.length) {
+        switch(nums[i]) {
+            case 0:
+                newArr.unshift(...nums.splice(i, 1));
+                break;
+            case 1:
+                newArr.push(...nums.splice(i, 1));
+                break;
+            default:
+                i++;
+                break;
+        }
+    }
+    
+    nums.unshift(...newArr);
+};
 
 # ******************************
 # 
