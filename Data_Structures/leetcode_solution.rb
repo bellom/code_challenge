@@ -783,9 +783,43 @@ def dfs(board, row, col, word)
 end
 
 # ******************************
-# 
+# Largest Rectangle in Histogram
 # ******************************
-
+var largestRectangleArea = function(heights) {
+    let maxArea = 0;
+    let currArea = 0;
+    
+    for (let i = 0; i < heights.length; i++) {
+        let l = i-1;                          
+        let r = i+1;
+    
+        let currHeight = heights[i];
+        
+        // Since we are comparing out from the current element
+        // elements of the same height as the current element 
+        // will have the same max area rectangle.
+        if (heights[r] === currHeight) continue;
+        
+        currArea = currHeight;
+        
+        // Check all bars to the left that are at least as tall.
+        while (l >= 0 && heights[l] >= currHeight) {
+            currArea += currHeight;
+            l--;
+        }
+        
+        // Check all bars to the right that are at least as tall.
+        while (r < heights.length && heights[r] >= currHeight) {
+            currArea += currHeight;
+            r++;
+        }
+        
+        maxArea = Math.max(currArea, maxArea);
+        currArea = 0;
+    }
+    
+    return maxArea;
+};
 # ******************************
 # 
 # ******************************
