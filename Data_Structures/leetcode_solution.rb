@@ -848,11 +848,30 @@ var maximalRectangle = function (matrix) {
     return max;
 }
 # ******************************
-# 
+# Binary Tree Inorder Traversal
 # ******************************
+# https://learn.freecodecamp.org/javascript-algorithms-and-data-structures/basic-data-structures/combine-arrays-with-the-spread-operator
+# ******************************
+var inorderTraversal = function(root) {
+  if(!root) return [];
+  return[...inorderTraversal(root.left), root.val, ...inorderTraversal(root.right)];
+};
 
-# ******************************
-# 
+var inorderTraversal = function(root) {
+  let result = []
+  let stack = []
+  while(root !== null || stack.length !== 0) {
+    while (root) {
+      stack.push(root)
+      root = root.left
+    }
+    root = stack.pop()
+    result.push(root.val)
+    root = root.right
+  }
+  return result
+};
+
 # ******************************
 
 # ******************************
