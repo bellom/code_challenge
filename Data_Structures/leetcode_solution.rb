@@ -873,9 +873,34 @@ var inorderTraversal = function(root) {
 };
 
 # ******************************
-
+# Unique Binary Search Trees
 # ******************************
-# 
+# DP solution in Javascript
+# The idea is to look at what you pick as the root and look as its left and right children's number in the arr created
+
+var numTrees = function(n) {
+if (n === 1) {
+        return 1; 
+    }
+    # size of n
+    let arr = [1,1]; 
+    
+    for (let i = 1; i< n; i++){
+        # first iteration 
+        let numNodes = i + 1;
+        let result = 0;
+        for (let j = 0; j < numNodes; j++){
+          # number of nodes to the left 
+            let numLeft = j; 
+            # number of stuff to the right 
+            let numRight = numNodes - (j+1); 
+            result = result + (arr[numLeft] * arr[numRight]);
+        }
+        arr[i + 1] = result;
+    }
+    return arr[n];
+};
+
 # ******************************
 
 # ******************************
