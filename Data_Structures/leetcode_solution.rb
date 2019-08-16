@@ -902,9 +902,27 @@ if (n === 1) {
 };
 
 # ******************************
-
+# Best Time to Buy and Sell Stock
 # ******************************
-# 
+# We are tryting to find the max of "Profit = Max - Min".
+# Because we can only sell stocks after we bought them, this problem is one-directional, which means Max is always somwhere right to the Min.
+
+# When our Min value is set, we traverse through the array and keep comparing (array[i]-Min) and previous Profit, and set Profit to whichever is larger.
+
+# We replace the previous Min when we found a new Min that is lower than it.
+# Because the problem is one-directional, we don't need to go back and worry about the past, just keep traversing, comparing, and updating the Profit.
+
+var maxProfit = function(prices) {
+    
+  let min = prices[0];
+  let max = 0;
+    
+    prices.forEach(i => {
+        i < min ? min = i : max = Math.max(max, i - min)
+    })
+    return max;
+};
+
 # ******************************
 
 # ******************************
