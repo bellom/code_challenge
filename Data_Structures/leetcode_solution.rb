@@ -992,13 +992,85 @@ var wordBreak = function(s, wordDict) {
 };
 
 # ******************************
+# Linked List Cycle
+# ******************************
+var hasCycle = function(head) {
+    
+    # //Check empty conditions
+    if(!head){
+        return false;
+    }
+    
+  #  /*Create a hashMap to check if the key(node.next) 
+  #     exists then return true*/
+    
+    let map = new Map();
+    let node = head;
+    
+    while (node) {        
+        if (!node.next){
+            return false;
+        } else if (map.has(node.next)) {
+            return true;
+        } else{
+            map.set (node.next, node.val);
+            node = node.next;
+        }
+    }   
+};
+
+
+# ***********************************************************
+
+var hasCycle = function(head) {
+    try{
+       JSON.stringify(head) ;
+    }catch(e){
+        return true;
+    };
+    return false;
+};
+
 
 # ******************************
-# 
+Linked List Cycle II
 # ******************************
+function detectCycle(head) {
+  if (!head || !head.next || !head.next.next) return null
 
-# ******************************
-# 
+  # // set `slow` and `fast` to their next tick, since we already know they
+  # // both start with `head`.
+  let slow = head.next
+  let fast = head.next.next
+
+  # // while `slow` and `fast` are NOT the same node, advance `slow` by a node and
+  # // `fast` by two nodes.
+  while (slow !== fast) {
+    slow = slow.next
+    # // if `fast.next` or `fast.next.next` does NOT exist, it's not a cycle.
+    if (!fast.next || !fast.next.next) return null
+    fast = fast.next.next
+  }
+
+  # // At this point, `slow` and `fast` are the same node
+
+  # // Now we want to find the beginning of the cycle
+
+  # // Move `fast` to the starting point (head)
+  fast = head
+
+  # // While `slow` and `fast` are NOT the same node, advance both by a node until
+  # // they meet at the same node
+  while (fast !== slow) {
+    fast = fast.next
+    slow = slow.next
+  }
+
+  # // At this point, `slow` and `fast` have met at the beginning of the cycle
+
+  # // We return the beginning of the cycle
+  return fast
+}
 # ******************************
 
 # ******************************
