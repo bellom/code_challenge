@@ -1072,9 +1072,34 @@ function detectCycle(head) {
   return fast
 }
 # ******************************
-
+# Sort List
 # ******************************
-# 
+# step 1. cut the list to two halves
+# step 2. sort each half
+# step 3. merge them 
+var sortList = function(head) {
+  if (head === null || head.next === null) return head;
+  let firstHead = head;
+  let curHead = head.next
+  let lastHead = null;
+
+  head.next = null;
+  while (curHead !== null) {
+    let next = curHead.next;
+    if (curHead.val < head.val){
+      curHead.next = firstHead;
+      firstHead = curHead;
+    } else {
+      curHead.next = lastHead;
+      lastHead = curHead;
+    }
+    curHead = next;
+  }
+  let res = sortList(firstHead);
+  head.next = sortList(lastHead);
+  return res;
+};
+
 # ******************************
 
 # ******************************
