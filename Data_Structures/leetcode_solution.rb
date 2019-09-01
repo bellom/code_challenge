@@ -1033,7 +1033,7 @@ var hasCycle = function(head) {
 
 
 # ******************************
-Linked List Cycle II
+# Linked List Cycle II
 # ******************************
 function detectCycle(head) {
   if (!head || !head.next || !head.next.next) return null
@@ -1098,7 +1098,7 @@ var sortList = function(head) {
 };
 
 # ******************************
-Maximum Product Subarray    
+# Maximum Product Subarray    
 # ******************************
 var maxProduct = function(nums) {
     let res = nums[0], min = nums[0], max = nums[0];
@@ -1119,8 +1119,35 @@ var maxProduct = function(nums) {
     }
     return res;
 };
+
 # ******************************
+# Binary Tree Maximum Path Sum
 # ******************************
+var maxPathSum = function(root) {
+
+  var max = Number.NEGATIVE_INFINITY;
+ 
+  function getMaxSum(node) {
+    if (!node) return 0;
+    var leftSum = getMaxSum(node.left);
+    var rightSum = getMaxSum(node.right);
+    
+    # // if Node by itself in big then children + Node
+    let max_single = Math.max(Math.max(leftSum,rightSum)+node.val, node.val);
+    
+    # // if the Node is the root node in the path
+    let max_top = Math.max(max_single,leftSum+rightSum+node.val);
+    
+    # // Store Maximum result 
+    max = Math.max(max, max_top);
+    
+    return max_single;
+  }
+
+  getMaxSum(root);
+  return max ;
+  
+};
 
 # ******************************
 # 
