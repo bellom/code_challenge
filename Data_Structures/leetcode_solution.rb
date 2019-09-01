@@ -1074,9 +1074,6 @@ function detectCycle(head) {
 # ******************************
 # Sort List
 # ******************************
-# step 1. cut the list to two halves
-# step 2. sort each half
-# step 3. merge them 
 var sortList = function(head) {
   if (head === null || head.next === null) return head;
   let firstHead = head;
@@ -1101,9 +1098,27 @@ var sortList = function(head) {
 };
 
 # ******************************
-
+Maximum Product Subarray    
 # ******************************
-# 
+var maxProduct = function(nums) {
+    let res = nums[0], min = nums[0], max = nums[0];
+    
+    for (let i = 1; i < nums.length; i++){
+        min *= nums[i];
+        max *= nums[i];
+        
+        if(nums[i] < 0){
+            let swap = max;
+            max = min;
+            min = swap;
+        }
+        
+        max = Math.max(max, nums[i]);
+        min = Math.min(min, nums[i]);
+        res = Math.max(res, max);
+    }
+    return res;
+};
 # ******************************
 # ******************************
 
