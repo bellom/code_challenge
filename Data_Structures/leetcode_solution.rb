@@ -1167,8 +1167,17 @@ function isMirror(root1, root2){
     return false;
 }
 # ******************************
-# 
+# Intersection of Two Linked Lists
 # ******************************
+var getIntersectionNode = function(headA, headB) {
+    let a = headA, b = headB;
+    
+    while(a != b){
+        a = a? a.next : headB;
+        b = b? b.next : headA;
+    }
+    return a;
+};
 
 # ******************************
 # 
