@@ -1180,11 +1180,24 @@ var getIntersectionNode = function(headA, headB) {
 };
 
 # ******************************
-# 
+# House Robber
 # ******************************
+const rob = nums => {
+  let j = 0,
+    k = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (i % 2 == 0) {
+      (j = Math.max(j + nums[i])), k;
+    } else {
+      k = Math.max(j, k + nums[i]);
+    }
+  }
+  return Math.max(j, k);
+};
 
 # ******************************
-# 
+# Majority Element
 # ******************************
 
 # ******************************
