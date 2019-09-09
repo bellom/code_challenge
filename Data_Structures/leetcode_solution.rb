@@ -1199,7 +1199,11 @@ const rob = nums => {
 # ******************************
 # Majority Element
 # ******************************
-
+var majorityElement = function(nums) {
+    nums.sort();
+    let i = Math.floor((nums.length -1)/2);
+    return nums[i];
+};
 # ******************************
 # 
 # ******************************
