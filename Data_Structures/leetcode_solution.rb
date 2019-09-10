@@ -1205,8 +1205,31 @@ var majorityElement = function(nums) {
     return nums[i];
 };
 # ******************************
-# 
+# reverse linked list
 # ******************************
+var reverseList = function(head) {
+    let prev = null;
+  
+    while(head){
+        [head.next, head, prev] = [prev, head.next, head]
+    }
+    return prev;
+};
+
+# **********************************************************
+
+var reverseList = function(head) {
+    let prev = null;
+    while (head) {
+        const next = head.next;
+        const curr = head;
+        curr.next = prev;
+        head = next;
+        prev = curr;
+    }
+    
+    return prev;
+};
 # ******************************
 
 # ******************************
