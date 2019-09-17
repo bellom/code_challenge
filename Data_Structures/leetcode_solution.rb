@@ -1267,9 +1267,16 @@ MinStack.prototype.getMin = function() {
 };
 
 # ******************************
-
+# Find the kth largest element
 # ******************************
-# 
+var findKthLargest = function(nums, k) {
+    nums.sort((a,b) => { return a - b });
+    
+    let pos = nums.length - k;
+    return nums[pos];
+        
+};
+ 
 # ******************************
 
 # ******************************
