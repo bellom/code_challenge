@@ -1273,14 +1273,22 @@ var findKthLargest = function(nums, k) {
     nums.sort((a,b) => { return a - b });
     
     let pos = nums.length - k;
-    return nums[pos];
-        
+    return nums[pos];      
 };
  
 # ******************************
-
+# Move zeros
 # ******************************
-# 
+var moveZeroes = function(nums) {
+    for(let i = nums.length-1; i >= 0; i--){
+      if(nums[i] === 0){
+        nums.splice(i, 1);
+        nums.push(0);
+      }
+    }
+    return nums;
+};
+
 # ******************************
 
 # ******************************
