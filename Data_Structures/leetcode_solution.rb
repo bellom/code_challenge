@@ -1309,12 +1309,32 @@ var productExceptSelf = function(nums) {
   return result;
 };
 # ******************************
+# Path Sum III
+# ******************************
+var pathSum = function(root, sum) {
+    if(root === null) return 0
+    //console.log(root.val, sum)
+    return pathSumFrom(root,sum) + pathSum(root.left, sum) + pathSum(root.right,sum)
+};
+
+const pathSumFrom = (node,sum) => {
+    if(node === null) return 0
+    return (node.val == sum ? 1 :0) + pathSumFrom(node.left, sum-node.val) + pathSumFrom(node.right,sum-node.val)
+}
 
 # ******************************
-# 
+# Find All Numbers Disappeared in an Array
 # ******************************
-# ******************************
-
+var findDisappearedNumbers = function(nums) {
+    let setA = new Set(nums);
+    let setB = new Set(Array.from({length: nums.length}, (v, k) => k+1)); 
+    let diff = [];
+    
+    for(let elem of setB){
+        if(!setA.has(elem)){diff.push(elem)}
+    }
+    return diff;
+};
 # ******************************
 # 
 # ******************************
