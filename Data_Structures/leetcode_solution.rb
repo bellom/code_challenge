@@ -1336,8 +1336,33 @@ var findDisappearedNumbers = function(nums) {
     return diff;
 };
 # ******************************
-# 
+# Shortest Unsorted Continuous Subarray
 # ******************************
+var findUnsortedSubarray = function(nums) {
+    // find the min and max
+    // 
+    let i = 0, j = nums.length-1;
+    let min = Math.min(...nums), max = Math.max(...nums);
+    
+    while(i !== j){
+        if((nums[i] === min) && (nums[j] === max)){
+            nums.shift(nums[i])
+            nums.pop(nums[j])
+        }
+        if(nums[i] === min){
+            nums.shift(nums[i])
+        }
+        if(nums[j] === max){
+            nums.pop(nums[j])
+        }
+        return nums.length
+    }
+    
+};
+
+# **********************************************************
+
+
 
 # ******************************
 # 
