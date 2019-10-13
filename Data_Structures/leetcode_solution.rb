@@ -1365,8 +1365,37 @@ var findUnsortedSubarray = function(nums) {
 
 
 # ******************************
-# 
+# Maximum Number of Balloons
 # ******************************
+var maxNumberOfBalloons = function(text) {
+    
+    // seperate the word given using frequecy diff.
+    // split the params
+    // create a variable count
+    // loop over splited word
+    // check if i include in the hash and increment count
+    // increment var res if b,a,n ate > 0 && l,o are > 1;
+    
+    let hash = {"b": 0, "a": 0, "l": 0, "o": 0, "n": 0};
+    let splited = text.split(""); // n l a e b o l k o 
+    let res = 0;
+    
+    for(let i in splited){
+        if(hash[splited[i]] != undefined){
+            hash[splited[i]] += 1;
+        }
+    }
+    
+    while(hash["b"] > 0 && hash["a"] > 0 & hash["n"] > 0 && hash["o"] > 1 && hash["l"] > 1){
+        res ++;
+        hash['b'] -= 1;
+        hash['a'] -= 1;
+        hash['l'] -= 2;
+        hash['o'] -= 2;
+        hash['n'] -= 1;
+    }
+    return res;
+};
 
 # ******************************
 # 
