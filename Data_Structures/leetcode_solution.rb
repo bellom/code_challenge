@@ -1361,6 +1361,18 @@ var findUnsortedSubarray = function(nums) {
 };
 
 # **********************************************************
+var findUnsortedSubarray = function(nums) {
+    let l = nums.length, r = 0;
+        for (let i = 0; i < nums.length - 1; i++) {
+            for (let j = i + 1; j < nums.length; j++) {
+                if (nums[j] < nums[i]) {
+                    r = Math.max(r, j);
+                    l = Math.min(l, i);
+                }
+            }
+        }
+        return r - l < 0 ? 0 : r - l + 1;
+};
 
 
 
@@ -1377,7 +1389,7 @@ var maxNumberOfBalloons = function(text) {
     // increment var res if b,a,n ate > 0 && l,o are > 1;
     
     let hash = {"b": 0, "a": 0, "l": 0, "o": 0, "n": 0};
-    let splited = text.split(""); // n l a e b o l k o 
+    let splited = text.split(""); 
     let res = 0;
     
     for(let i in splited){
@@ -1398,8 +1410,36 @@ var maxNumberOfBalloons = function(text) {
 };
 
 # ******************************
-# 
+# Palindrome Number
 # ******************************
+var isPalindrome = function(x) {
+    // create an var revserd; holding x.reverse
+    // check if x == revserd retun true
+    // else return false
+    // x = 121
+    // reversed = "121"; 
+    
+    let params = x.toString().split("");
+    let split = x.toString().split("");
+    let rev = split.reverse();
+    
+    let check  = params.every( e => rev.includes(e) )
+    
+    if(!check){ 
+        return false; 
+    } else {return true }
+    
+    
+    if(check){ 
+        return true; 
+    } else {return false} 
+};
+
+# ***************************************************
+
+def is_palindrome(x)
+  x.to_s == x.to_s.reverse();
+end
 
 # ******************************
 # 
