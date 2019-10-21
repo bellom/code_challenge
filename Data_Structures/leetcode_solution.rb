@@ -1484,8 +1484,25 @@ var longestPalindrome = function(s) {
     return length
 };
 # ******************************
-# 
+# Contains Duplicate II
 # ******************************
+
+var containsNearbyDuplicate = function(nums, k) {
+    // nested loop through the array from index i = 0
+     //loop through the array from index j = i + 1
+    //check if nums[i] === nums[j] && Math.abs(i - j) <= k
+    // return true;
+
+    for(let i = 0; i < nums.length; i++){
+      for(let j = i + 1; j < nums.length; j++){
+        if(nums[i] === nums[j] && Math.abs(i - j) <= k){
+          return true;
+        }
+      }
+    }
+    return false;
+};
+
 # ******************************
 
 # ******************************
