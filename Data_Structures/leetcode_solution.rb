@@ -1423,12 +1423,7 @@ var isPalindrome = function(x) {
     let split = x.toString().split("");
     let rev = split.reverse();
     
-    let check  = params.every( e => rev.includes(e) )
-    
-    if(!check){ 
-        return false; 
-    } else {return true }
-    
+    let check  = params.every( e => rev.includes(e) )  
     
     if(check){ 
         return true; 
@@ -1442,9 +1437,52 @@ def is_palindrome(x)
 end
 
 # ******************************
-# 
+# Longest Palindrome
 # ******************************
+var longestPalindrome = function(s) {
+    //"abccccdd" 
+    //create frequency counter 
+    //create length = 0;
+    //split, loop and increment frequency of each letter in counter hash
+    
+        //-> [a,b,c,c,c,c,d,d] -> {a:1, b:1, c:0, d:0}
+    
+    // if counterHash[letter] is > 1 && even then add to length and subtract from value
+        //counter['c'] -> length == 6
+    
+    // if counterHash[letter] is > 1 && odd then subtract the previous even number from that     // value and add that previous even number to length
+    
+    //loop over counterhash and if any value > 0 add 1 to length
+    //length + 1 == 7
+    
+    let counterHash = {};
+    let length = 0;
+    let splitStr = s.split('');
 
+    for(let i = 0; i < splitStr.length; i++){
+      let letter = splitStr[i];
+      counterHash[letter]? counterHash[letter] += 1 : counterHash[letter] = 1;
+    }
+
+    let entries = Object.entries(counterHash);
+
+    for(let [k,v] of entries){
+      if(v > 1 && v % 2 == 0){
+        length += v;
+        counterHash[k] -= v;
+      }else if(v > 1 && v % 2 != 0){
+        length += v - 1;
+        counterHash[k] -= v - 1
+      }
+    }
+    for(let el in counterHash){
+      if(counterHash[el] > 0){
+        length++;
+        break;
+      }
+    }
+    return length
+};
 # ******************************
 # 
 # ******************************
