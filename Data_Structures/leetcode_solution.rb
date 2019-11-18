@@ -1491,6 +1491,7 @@ var containsNearbyDuplicate = function(nums, k) {
     // nested loop through the array from index i = 0
      //loop through the array from index j = i + 1
     //check if nums[i] === nums[j] && Math.abs(i - j) <= k
+    // nums[i] means the value while i means the index
     // return true;
 
     for(let i = 0; i < nums.length; i++){
