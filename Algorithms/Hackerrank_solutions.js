@@ -1,4 +1,40 @@
 // ******************************
+// Fizz Buzz
+// ******************************
+
+for (let i=1; i <= 100; i++) {
+    switch(0) {
+      case i%15 === 0: 
+        console.log('FizzBuzz')
+        break;
+  
+      case i%5 === 0:
+        console.log('Fuzz')
+        break;
+  
+      case i%3 === 0:
+        console.log('Fizz')
+        break;
+  
+      default:
+        console.log(i)
+        break;
+    }    
+  }
+  
+// *****************************
+  
+  for (var n = 1; n <= 100; n++) {
+    var output = "";  
+    if (n % 3 == 0)
+      output = "Fizz";
+    if (n % 5 == 0)
+      output += "Buzz";
+    console.log(output || n);
+  }
+
+
+// ******************************
 // Drawing Book
 // ******************************
 function pageCount(n, p) {
