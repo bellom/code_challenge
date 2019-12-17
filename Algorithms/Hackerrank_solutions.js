@@ -35,6 +35,31 @@ for (let i=1; i <= 100; i++) {
 
 
 // ******************************
+// Anagram
+// ******************************
+function anagram(s) {
+    
+  // return -1 if s.length equal to odd number
+  // divide given string into 2 strings
+  // loop over s1 and check if it includes in s2
+  // create var count to store the numbers of changes
+  
+  let len = s.length
+  
+  if(len % 2 !== 0){return -1} 
+  
+  let s1 = s.substring(0, len/2)
+  let s2 = s.substring(len/2, len)
+  // console.log(s1=aaa, s2=bbb)
+  let count = 0;
+  
+  for(let i = 0; i < len/2; i++){
+      s2.includes(s1[i]) ? s2=s2.replace(s1[i],"") : count++;
+  }
+  return  count;
+}
+
+// ******************************
 // Drawing Book
 // ******************************
 function pageCount(n, p) {
