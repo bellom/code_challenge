@@ -59,6 +59,57 @@ function anagram(s) {
   return  count;
 }
 
+
+
+// ******************************
+// Panlindrome index
+// ******************************
+function palindromeIndex(s) {
+  let revsdS = s.split('').reverse().join('')
+
+  if (s === revsdS) {return -1}
+
+  if(s !== revsdS){
+    let i = 0, j = s.length-1
+    while(i <= j){
+      if (s[i] === s[j] ){
+        i++;
+        j--;
+      } else {
+        if (s[i+1] === s[j] && s[i+1] === s[j-1]){
+          return i;
+        }
+        if (s[i] === s[j-1] && s[i+1] === s[j-2]){
+          return j;
+        }
+      }
+    }
+  }
+}
+
+// **********************************************************
+
+function palindromeIndex(s) {
+  let i = 0;
+  let j = s.length - 1;
+  while (i <= j) {
+      if (s[i] === s[j]) {
+          i++;
+          j--;
+      } else {
+          if (s[i + 1] === s[j] && s[i + 2] === s[j - 1]) {
+              return i;
+          }
+          if (s[i] === s[j - 1] && s[i + 1] === s[j - 2]) {
+              return j;
+          }
+      }
+  }
+  return -1;
+}
+
+
+
 // ******************************
 // Drawing Book
 // ******************************
